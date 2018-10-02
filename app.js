@@ -1,25 +1,19 @@
-class TodoListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    return <li key ={this.props.todo}>{this.props.todo}</li>;
-  }
-}
+const GroceryListItem = (name) => <li>{name}</li>;
 
-var TodoList = (props) => (
-  <ul>
-    {props.todos.map(todo => 
-      <TodoListItem todo = {todo} />
-    )}
-  </ul>
+const GroceryList = (props) => {
+  return props.map((props) =>
+    GroceryListItem(props)
+  );
+};
+
+let App = () => (
+  <div>
+    {GroceryList(['soda','soup','salmon','smoothies'])}
+  </div>
 )
 
-class GroceryListItem() {
-  
-}
-
-var todoList = new TodoList({todos: ['test', 'anotherTest']});
-
-ReactDOM.render(todoList, document.getElementById('app'));
+ReactDOM.render(
+  <ul><App /></ul>,
+  document.getElementById('app')
+);
